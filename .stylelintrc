@@ -1,0 +1,12 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "syntax": "scss",
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "rules": {
+    "declaration-empty-line-before": null,
+    "order/properties-alphabetical-order": null,
+    "string-quotes": "double"
+  }
+}

@@ -1,0 +1,136 @@
+@import "./variables";
+@import "./mixins";
+@import "./fonts";
+
+.page {
+  box-sizing: border-box;
+  min-width: 320px;
+  min-height: 100%;
+
+  font-size: 10px;
+
+  scroll-behavior: smooth;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  &__content {
+    position: relative;
+
+    flex-grow: 1;
+  }
+
+  &__footer-wrapper {
+    flex-shrink: 0;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  display: flex; // Fixing a bug in IE for min-height and flexbox (flex-direction:column)
+  flex-direction: column; // and pressing footer to bottom in IE 10-11
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+
+  font-size: $font-size;
+  line-height: $line-height;
+  font-family: $font-family;
+  text-align: left;
+  color: $text-color;
+  word-break: break-word;
+
+  background-color: $body-bg;
+}
+
+svg {
+  fill: currentColor;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+p,
+ul,
+ol,
+dl,
+table,
+blockquote,
+pre,
+address,
+figure {
+  margin-top: 0;
+  margin-bottom: $typo-margin-vertical;
+}
+
+.link {
+  position: relative;
+
+  color: $link-color;
+  text-decoration: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 1px;
+
+    background-color: $link-color;
+    opacity: 0;
+
+    transition: opacity $transition-time, bottom $transition-time;
+  }
+
+  @media (hover: hover) {
+    &:hover::after,
+    &:focus::after {
+      bottom: -2px;
+
+      opacity: 1;
+    }
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  border: 0;
+
+  clip: rect(0 0 0 0);
+}
+
+/* layout */
+.container {
+  width: 100%;
+  max-width: 1020px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 40px;
+  padding-left: 40px;
+}
