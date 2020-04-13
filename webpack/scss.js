@@ -6,8 +6,8 @@ module.exports = function () {
           test: /\.scss$/,
           use: [
             'style-loader',
-            'css-loader',
-            'sass-loader',
+            'css-loader?sourceMap',
+            'sass-loader?sourceMap',
           ],
         },
       ],

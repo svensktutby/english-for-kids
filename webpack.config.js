@@ -35,7 +35,7 @@ const webpackConfig = merge(
       filename: './js/[name].js',
     },
     performance: {
-      hints: 'warning',
+      hints: NODE_ENV === 'production' ? 'warning' : false,
     },
     plugins: [
       new webpack.ProvidePlugin({
@@ -60,7 +60,7 @@ const webpackConfig = merge(
   babel(),
   pug(),
   images(),
-  // spriteSVG(),
+  spriteSVG(),
   fonts(),
   lintJS(),
   lintCSS(),
@@ -71,7 +71,7 @@ const webpackConfig = merge(
 
   webpackConfig.plugins.push(
     new HtmlWebpackPlugin({
-      // favicon: './assets/favicon.ico',
+      favicon: './assets/favicon.ico',
       filename: `${file}.html`,
       template: `./pages/${file}/${file}.pug`,
       chunks: [file.replace(/-(\w)/g, (match, c) => c.toUpperCase()), 'common'],
@@ -86,7 +86,7 @@ module.exports = () => {
       clean(),
       extractCSS(),
       uglifyJS(),
-      favicon(),
+      // favicon(),
     ]);
   }
 

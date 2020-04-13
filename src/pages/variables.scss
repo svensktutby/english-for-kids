@@ -14,6 +14,11 @@ $gray-lighter:                hsl(0, 0%, 80%);
 $gray-lightest:               hsl(0, 0%, 90%);
 $white:                       hsl(0, 0%, 100%);
 
+$blue:                       	hsl(162, 87%, 94%);
+
+$white-blue-gradient:         linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
+$blue-pink-gradient:          linear-gradient(-225deg, #e3fdf5 0%, #ffe6fa 100%);
+
 $color-main:                  hsl(208, 98%, 43%);
 $color-success:               hsl(120, 39%, 54%);
 $color-danger:                hsl(2, 64%, 58%);
@@ -23,7 +28,8 @@ $color-warning:               hsl(35, 84%, 62%);
 ******************************/
 $text-color:                  $gray-darkest;
 $text-color-muted:            $gray;
-$body-bg:                     $white;
+$body-bg:                     $blue;
+$body-gradient:               $blue-pink-gradient;
 
 $link-color:                  $color-main;
 $link-color--hover:           darken($color-main, 15%);
@@ -32,7 +38,7 @@ $border-color:                $gray-lighten;
 
 /* Fonts
 ******************************/
-$font-family:                 "Arial", sans-serif;
+$font-family:                 "Roboto", "Arial", sans-serif;
 $font-size:                   16px;
 $font-size-sm:                0.75em; // 12px from 16px
 

@@ -6,7 +6,7 @@ module.exports = function () {
           test: /\.css$/,
           use: [
             'style-loader',
-            'css-loader',
+            'css-loader?sourceMap',
           ],
         },
       ],
