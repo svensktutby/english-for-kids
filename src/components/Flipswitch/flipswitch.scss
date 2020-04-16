@@ -1,0 +1,93 @@
+@import "../../pages/base";
+
+.flipswitch {
+  position: relative;
+
+  width: 120px;
+
+  user-select: none;
+
+  &--header {
+    margin-left: auto;
+  }
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__label {
+    display: block;
+    overflow: hidden;
+
+    border: 2px solid $gray-lighter;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  &__inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+
+    transition: margin $transition-time ease-in 0s;
+  }
+
+  &__inner::before,
+  &__inner::after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 40px;
+    padding: 5px 0;
+
+    font-family: inherit;
+    color: $white;
+  }
+
+  &__inner::before {
+    content: attr(data-show);
+
+    padding-left: 10px;
+
+    //color: $white;
+
+    background-color: $cyan;
+  }
+
+  &__inner::after {
+    content: attr(data-hide);
+
+    padding-right: 10px;
+
+    text-align: right;
+    //color: $gray-dark;
+
+    background-color: $pink;
+  }
+
+  &__switch {
+    position: absolute;
+    top: 0;
+    right: 77px;
+    bottom: 0;
+
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin: 6px;
+
+    background: $white;
+    border: 2px solid $gray-lighter;
+    border-radius: 5px;
+
+    transition: all $transition-time ease-in 0s;
+  }
+
+  &__checkbox:checked + .flipswitch__label .flipswitch__inner {
+    margin-left: 0;
+  }
+
+  &__checkbox:checked + .flipswitch__label .flipswitch__switch {
+    right: 0;
+  }
+}

@@ -1,0 +1,60 @@
+@import "../../pages/base";
+
+.sidebar {
+  min-width: 320px;
+  max-width: 320px;
+  min-height: 100vh;
+  padding-top: 120px;
+
+  color: #fff;
+
+  background-color: $cyan;
+  background-image: $cyan-purple-gradient;
+  transform-origin: bottom left;
+
+  transition-property: transform, margin-left;
+  transition-duration: $transition-time * 2;
+  transition-timing-function: cubic-bezier(0.945, 0.02, 0.27, 0.665);
+
+  &--hidden {
+    margin-left: -320px;
+
+    transform: rotateY(100deg);
+  }
+
+  &__list {
+    @include reset-list;
+  }
+
+  &__link {
+    display: block;
+    padding: 10px 80px;
+
+    color: inherit;
+    text-decoration: none;
+
+    transition: color $transition-time;
+  }
+
+  &__link:focus {
+    outline: none;
+  }
+
+  @media (hover: hover) {
+    &__link:hover,
+    &__link:focus {
+      color: $cyan;
+
+      background-color: $blue;
+      background-image: $blue-white-gradient;
+    }
+  }
+
+  &__item--active > .sidebar__link {
+    color: $white;
+
+    background-color: $purple;
+    background-image: $purple-blue-gradient;
+    cursor: default;
+  }
+}

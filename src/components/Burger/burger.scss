@@ -1,0 +1,104 @@
+@import "../../pages/base";
+
+.burger {
+  position: relative;
+  z-index: 1;
+
+  display: inline-block;
+  width: 30px;
+  padding: 0;
+
+  line-height: 30px;
+
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+
+  user-select: none;
+
+  > span {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: $toggle-part-height;
+
+    font-size: 0;
+    vertical-align: middle;
+    color: transparent;
+
+    background-color: $toggle-part-bg-color;
+    border-radius: $toggle-part-height;
+
+    transition: background-color $transition-time;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+
+      width: 100%;
+      height: $toggle-part-height;
+
+      background-color: $toggle-part-bg-color;
+      transform-origin: 50% 50%;
+      border-radius: $toggle-part-height;
+
+      transition: top $transition-time $transition-time, transform $transition-time, background-color $transition-time;
+    }
+
+    &::before {
+      top: -10px;
+    }
+
+    &::after {
+      top: 10px;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  @media (hover: hover) {
+    &:hover > span,
+    &:focus > span {
+      background-color: $toggle-part-hover-color;
+
+      &::before,
+      &::after {
+        background-color: $toggle-part-hover-color;
+      }
+    }
+  }
+
+  &--close {
+    > span {
+      background-color: transparent;
+
+      transition: background-color $transition-time 0s;
+
+      &::before,
+      &::after {
+        top: 0;
+
+        transition: top $transition-time, transform $transition-time $transition-time;
+      }
+
+      &::before {
+        transform: rotate3d(0, 0, 1, 45deg);
+      }
+
+      &::after {
+        transform: rotate3d(0, 0, 1, -45deg);
+      }
+    }
+
+    @media (hover: hover) {
+      &:hover > span,
+      &:focus > span {
+        background-color: transparent;
+      }
+    }
+  }
+}

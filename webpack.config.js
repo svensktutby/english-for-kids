@@ -60,7 +60,7 @@ const webpackConfig = merge(
   babel(),
   pug(),
   images(),
-  spriteSVG(),
+  // spriteSVG(),
   fonts(),
   lintJS(),
   lintCSS(),

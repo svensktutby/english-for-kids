@@ -10,14 +10,16 @@
   scroll-behavior: smooth;
 
   &__inner {
+    position: relative;
+
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    //flex-direction: column;
+    //min-height: 100vh;
+
+    perspective: 1500px;
   }
 
   &__content {
-    position: relative;
-
     flex-grow: 1;
   }
 
@@ -27,8 +29,8 @@
 }
 
 *,
-*::before,
-*::after {
+::before,
+::after {
   box-sizing: inherit;
 }
 
@@ -36,7 +38,6 @@ body {
   display: flex; // Fixing a bug in IE for min-height and flexbox (flex-direction:column)
   flex-direction: column; // and pressing footer to bottom in IE 10-11
   min-width: 320px;
-  min-height: 100%;
   margin: 0;
 
   font-size: $font-size;
@@ -109,27 +110,5 @@ figure {
 }
 
 .visually-hidden {
-  position: absolute;
-
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-
-  white-space: nowrap;
-
-  border: 0;
-
-  clip: rect(0 0 0 0);
-}
-
-/* layout */
-.container {
-  width: 100%;
-  max-width: 1020px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 40px;
-  padding-left: 40px;
+  @include visually-hidden;
 }
