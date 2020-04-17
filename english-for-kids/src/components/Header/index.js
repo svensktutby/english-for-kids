@@ -1,22 +1,30 @@
 import './header.scss';
-import {
-  createFragmentFromString,
-} from '../utilites';
+import { createNode } from '../utils';
+import Burger from '../Burger';
+import Flipswitch from '../Flipswitch';
 
 export default class Header {
-  constructor({
-    classes,
-  }) {
-    this.classes = classes;
+  constructor() {
+    this.inner = createNode('div', 'row',
+      createNode('h1', 'visually-hidden', 'English for kids - приложение для изучения английских слов детьми.'));
+    this.header = createNode('header', 'page__header',
+      createNode('div', 'container', this.inner));
   }
 
-  generateFragment() {
-    this.headerTemplate = `<header class="${this.classes.join(' ')}">
-                              <div class="container">
-                                <div class="row"></div>
-                              </div>
-                            </header>`;
+  generateLayout() {
+    const { burger } = new Burger({
+      targetId: 'sidebar',
+      targetClassToggle: 'sidebar--hidden',
+    });
 
-    return createFragmentFromString(this.headerTemplate);
+    const { flipswitch } = new Flipswitch({
+      dataShow: 'TRAIN',
+      dataHide: 'PLAY',
+    });
+
+    this.inner.append(burger);
+    this.inner.append(flipswitch);
+
+    return this;
   }
 }

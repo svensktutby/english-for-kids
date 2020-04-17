@@ -1,46 +1,29 @@
 import './sidebar.scss';
-import {
-  createFragmentFromString,
-} from '../utilites';
+import { createNode } from '../utils';
 
 export default class Sidebar {
-  constructor({
-    id,
-    classes,
-    linkTitles,
-  }) {
-    this.id = id;
-    this.classes = classes;
-    this.linkTitles = linkTitles;
+  constructor({ data }) {
+    this.data = data;
+    this.sidebarList = createNode('ul', 'sidebar__list',
+      createNode('li', 'sidebar__item sidebar__item--active',
+        createNode('a', 'sidebar__link', 'Main Page', null, ['href', 'index.html'])));
+    this.sidebar = createNode('nav', 'sidebar sidebar--hidden', this.sidebarList, null, ['id', 'sidebar']);
   }
 
-  generateFragment() {
-    this.sidebarTemplate = `<nav
-                              class="${this.classes.join(' ')}"
-                              id="${this.id}">
-                              <ul class="sidebar__list">
-                                <li class="sidebar__item sidebar__item--active">
-                                  <a class="sidebar__link" href="index.html">Main Page</a>
-                                </li>
-                              </ul>
-                             </nav>`;
+  generateLayout() {
+    const linkTitles = this.data.map((item) => item.title);
 
-    this.sidebar = createFragmentFromString(this.sidebarTemplate);
-    this.sidebarList = this.sidebar.querySelector('.sidebar__list');
-
-    this.linkTitles.forEach((item) => {
+    linkTitles.forEach((item) => {
       const href = `category.html#${item
         .toLowerCase()
         .replace(/\s/g, '-')
         .replace(/\(|\)/g, '')}`;
 
-      this.sidebarItemTemplate = `<li class="sidebar__item">
-                                     <a class="sidebar__link" href="${href}">${item}</a>
-                                   </li>`;
-
-      this.sidebarList.innerHTML += this.sidebarItemTemplate;
+      createNode('li', 'sidebar__item',
+        createNode('a', 'sidebar__link', item, null, ['href', href]),
+        this.sidebarList);
     });
 
-    return this.sidebar;
+    return this;
   }
 }
