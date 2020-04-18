@@ -9,7 +9,7 @@ module.exports = function () {
             {
               loader: 'file-loader',
               options: {
-                name: 'assets/img/[path][name].[hash:8].[ext]',
+                name: '[path][name].[hash:8].[ext]',
                 esModule: false,
               },
             },

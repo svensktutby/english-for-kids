@@ -8,13 +8,18 @@
 
   color: #fff;
 
-  background-color: $cyan;
-  background-image: $cyan-purple-gradient;
+  background-color: $train-sidebar-color;
+  background-image: $train-sidebar-gradient;
   transform-origin: bottom left;
 
-  transition-property: transform, margin-left;
-  transition-duration: $transition-time * 2;
   transition-timing-function: cubic-bezier(0.945, 0.02, 0.27, 0.665);
+  transition-duration: $transition-time * 2;
+  transition-property: transform, margin-left, left, background-color, background-image;
+
+  .page__inner--theme-play & {
+    background-color: $play-sidebar-color;
+    background-image: $play-sidebar-gradient;
+  }
 
   &--hidden {
     margin-left: -320px;
@@ -43,10 +48,24 @@
   @media (hover: hover) {
     &__link:hover,
     &__link:focus {
-      color: $cyan;
+      color: $train-color;
 
-      background-color: $blue;
+      background-color: $light-blue;
       background-image: $blue-white-gradient;
+
+      .page__inner--theme-play & {
+        color: $play-color;
+      }
+    }
+  }
+
+  @media (max-width: 1600px) {
+    position: absolute;
+    z-index: 5;
+    left: 0;
+
+    &--hidden {
+      left: -320px;
     }
   }
 
@@ -56,5 +75,12 @@
     background-color: $purple;
     background-image: $purple-blue-gradient;
     cursor: default;
+
+    .page__inner--theme-play & {
+      color: $white;
+
+      background-color: $light-pink;
+      background-image: $play-gradient;
+    }
   }
 }

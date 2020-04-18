@@ -66,7 +66,7 @@ const webpackConfig = merge(
   lintCSS(),
 );
 
-['index', 'category'].forEach((file) => {
+['index'].forEach((file) => {
   webpackConfig.entry[file] = `./pages/${file}/${file}.js`;
 
   webpackConfig.plugins.push(

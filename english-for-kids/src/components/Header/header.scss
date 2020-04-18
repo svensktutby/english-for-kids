@@ -1,7 +1,7 @@
-.page {
-  &__header {
-    .row {
-      padding: 40px 0;
-    }
+@import "../../pages/base";
+
+.page-header {
+  &__flipswitch {
+    margin-left: auto;
   }
 }

@@ -7,14 +7,14 @@ export default class Sidebar {
     this.sidebarList = createNode('ul', 'sidebar__list',
       createNode('li', 'sidebar__item sidebar__item--active',
         createNode('a', 'sidebar__link', 'Main Page', null, ['href', 'index.html'])));
-    this.sidebar = createNode('nav', 'sidebar sidebar--hidden', this.sidebarList, null, ['id', 'sidebar']);
+    this.sidebar = createNode('nav', 'sidebar sidebar--hidden sidebar--train', this.sidebarList, null, ['id', 'sidebar']);
   }
 
   generateLayout() {
     const linkTitles = this.data.map((item) => item.title);
 
     linkTitles.forEach((item) => {
-      const href = `category.html#${item
+      const href = `#${item
         .toLowerCase()
         .replace(/\s/g, '-')
         .replace(/\(|\)/g, '')}`;

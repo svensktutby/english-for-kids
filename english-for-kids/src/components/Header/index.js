@@ -7,7 +7,7 @@ export default class Header {
   constructor() {
     this.inner = createNode('div', 'row',
       createNode('h1', 'visually-hidden', 'English for kids - приложение для изучения английских слов детьми.'));
-    this.header = createNode('header', 'page__header',
+    this.header = createNode('header', 'page-header page__header',
       createNode('div', 'container', this.inner));
   }
 

@@ -7,7 +7,7 @@
  * @return {HTMLElement}
  */
 
-export default function createNode(el, classNames, child, parent, ...dataAttr) {
+export default function createNode(el, classNames, child, parent, ...attr) {
   let element = null;
   try {
     element = document.createElement(el);
@@ -29,8 +29,8 @@ export default function createNode(el, classNames, child, parent, ...dataAttr) {
     parent.appendChild(element);
   }
 
-  if (dataAttr.length) {
-    dataAttr.forEach(([attrName, attrValue]) => {
+  if (attr.length) {
+    attr.forEach(([attrName, attrValue]) => {
       if (attrValue === '') {
         element.setAttribute(attrName, '');
       } else {

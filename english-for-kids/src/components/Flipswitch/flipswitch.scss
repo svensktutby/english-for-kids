@@ -7,10 +7,6 @@
 
   user-select: none;
 
-  &--header {
-    margin-left: auto;
-  }
-
   &__checkbox {
     display: none;
   }
@@ -49,9 +45,8 @@
 
     padding-left: 10px;
 
-    //color: $white;
-
-    background-color: $cyan;
+    background-color: $train-color;
+    background-image: $train-gradient;
   }
 
   &__inner::after {
@@ -60,9 +55,9 @@
     padding-right: 10px;
 
     text-align: right;
-    //color: $gray-dark;
 
-    background-color: $pink;
+    background-color: $play-color;
+    background-image: $play-gradient;
   }
 
   &__switch {

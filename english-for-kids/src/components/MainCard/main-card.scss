@@ -1,0 +1,111 @@
+@import "../../pages/base";
+
+.main-card {
+  position: relative;
+
+  display: block;
+  max-width: 450px;
+  padding-top: $grid-gutter-width / 2;
+
+  transition: transform $transition-time;
+
+  &__link {
+    display: block;
+    padding: $grid-gutter-width / 2;
+    padding: $grid-gutter-width / 2;
+
+    font-size: 1rem;
+    text-align: center;
+    color: $white;
+    text-decoration: none;
+
+    background-color: $train-color;
+    background-image: $train-gradient;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px -10px #111;
+
+    transition-duration: $transition-time;
+    transition-property: box-shadow, background-color, background-image;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__img-wrapper {
+    overflow: hidden;
+
+    border-radius: 5px 5px 0 0;
+  }
+
+  &__image {
+    display: block;
+
+    background-color: rgba(#000, 0.7);
+  }
+
+  &__title {
+    position: relative;
+
+    min-height: 60px;
+    margin: 0;
+    padding: 15px 0;
+
+    background-color: rgba(#fff, 0.2);
+    border-radius: 0 0 5px 5px;
+  }
+
+  &__title-inner {
+    position: absolute;
+    top: -24px;
+    right: 0;
+
+    min-width: 1%;
+    padding: 5px 10px;
+
+    background-color: $train-color;
+    border-radius: 3px;
+
+    transition-duration: $transition-time;
+    transition-property: min-width, background-color, border-radius;
+  }
+
+  .page__inner--theme-play & {
+    .main-card__link {
+      background-color: $play-color;
+      background-image: $play-gradient;
+    }
+
+    .main-card__title-inner {
+      background-color: $play-color;
+    }
+  }
+
+  @for $i from 1 through 9 {
+    &:nth-child(#{$i}) {
+      $rotation: (5 - random(10)) + deg;
+
+      transform: translateY(0) rotate($rotation);
+    }
+  }
+
+  @media (hover: hover) {
+    &:hover,
+    &:focus {
+      z-index: 3;
+
+      outline: none;
+      transform: translateY(-10px);
+
+      .main-card__link {
+        box-shadow: 0 13px 30px -15px #000;
+      }
+
+      .main-card__title-inner {
+        min-width: 100%;
+
+        border-radius: 0;
+      }
+    }
+  }
+}

@@ -12,14 +12,31 @@ export default class Burger {
       createNode('span', null,
         createNode('span', 'visually-hidden', 'Toggle sidebar')),
       null, ['id', 'burger'], ['data-target-id', this.targetId], ['data-target-class-toggle', this.targetClassToggle]);
-    this.listener = this.showBurgerTarget.bind(this);
-    this.burger.addEventListener('click', this.listener);
+    this.handler = (evt) => this.burgerClickHandler(evt);
+    this.burger.addEventListener('click', this.handler);
+    this.targetItem = '';
   }
 
-  showBurgerTarget() {
+  openBurgerTarget() {
+    this.burger.classList.add('burger--close');
+    this.targetItem = document.getElementById(this.targetId);
+    this.targetItem.classList.remove(this.targetClassToggle);
+  }
+
+  closeBurgerTarget() {
+    this.burger.classList.remove('burger--close');
+    this.targetItem.classList.add(this.targetClassToggle);
+  }
+
+  burgerClickHandler() {
     if (this.targetId && this.targetClassToggle) {
-      this.burger.classList.toggle('burger--close');
-      document.getElementById(this.targetId).classList.toggle(this.targetClassToggle);
+      if (!this.burger.classList.contains('burger--close')) {
+        this.openBurgerTarget();
+        document.addEventListener('click', this.documentClickHandler);
+      } else {
+        this.closeBurgerTarget();
+      }
+      this.burger.blur();
     }
   }
 }
