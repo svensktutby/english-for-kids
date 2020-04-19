@@ -5,6 +5,7 @@
   max-width: 320px;
   min-height: 100vh;
   padding-top: 120px;
+  overflow-y: auto;
 
   color: #fff;
 
@@ -63,9 +64,11 @@
     position: absolute;
     z-index: 5;
     left: 0;
+    top: 0;
+    bottom: 0;
 
     &--hidden {
-      left: -320px;
+      left: -100%;
     }
   }
 

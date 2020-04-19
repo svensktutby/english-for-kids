@@ -8,6 +8,7 @@ const scss = require('./webpack/scss');
 const css = require('./webpack/css');
 const extractCSS = require('./webpack/css.extract');
 const uglifyJS = require('./webpack/js.uglify');
+const copy = require('./webpack/copy');
 const images = require('./webpack/images');
 const spriteSVG = require('./webpack/svg.sprite');
 const favicon = require('./webpack/favicon');
@@ -62,11 +63,12 @@ const webpackConfig = merge(
   images(),
   // spriteSVG(),
   fonts(),
+  copy(),
   lintJS(),
   lintCSS(),
 );
 
-['index'].forEach((file) => {
+['index', 'category'].forEach((file) => {
   webpackConfig.entry[file] = `./pages/${file}/${file}.js`;
 
   webpackConfig.plugins.push(

@@ -15,7 +15,7 @@ export default class MainCard {
 
   generateLayout() {
     const firstWord = this.words[0].word;
-    const href = `#${this.title
+    const href = `category.html#${this.title
       .toLowerCase()
       .replace(/\s/g, '-')
       .replace(/\(|\)/g, '')}`;

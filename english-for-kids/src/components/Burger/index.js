@@ -13,13 +13,13 @@ export default class Burger {
         createNode('span', 'visually-hidden', 'Toggle sidebar')),
       null, ['id', 'burger'], ['data-target-id', this.targetId], ['data-target-class-toggle', this.targetClassToggle]);
     this.handler = (evt) => this.burgerClickHandler(evt);
-    this.burger.addEventListener('click', this.handler);
+    document.addEventListener('click', this.handler);
     this.targetItem = '';
   }
 
   openBurgerTarget() {
-    this.burger.classList.add('burger--close');
     this.targetItem = document.getElementById(this.targetId);
+    this.burger.classList.add('burger--close');
     this.targetItem.classList.remove(this.targetClassToggle);
   }
 
@@ -28,12 +28,15 @@ export default class Burger {
     this.targetItem.classList.add(this.targetClassToggle);
   }
 
-  burgerClickHandler() {
-    if (this.targetId && this.targetClassToggle) {
-      if (!this.burger.classList.contains('burger--close')) {
+  burgerClickHandler(evt) {
+    const { target } = evt;
+
+    if (this.targetId && this.targetClassToggle && evt.target !== this.targetItem) {
+      if ((target === this.burger
+        || target.closest('#burger'))
+        && !this.burger.classList.contains('burger--close')) {
         this.openBurgerTarget();
-        document.addEventListener('click', this.documentClickHandler);
-      } else {
+      } else if (this.burger.classList.contains('burger--close')) {
         this.closeBurgerTarget();
       }
       this.burger.blur();

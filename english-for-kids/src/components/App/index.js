@@ -2,7 +2,6 @@ import '../plugins';
 import { createNode, importAll } from '../utils';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
-import MainContent from '../MainContent';
 
 const data = require('../data.json');
 
@@ -14,16 +13,14 @@ const images = imageSources.reduce((acc, src) => {
   return acc;
 }, {});
 
-const renderPage = () => {
+const renderPage = (innerNode) => {
   const { header } = new Header().generateLayout();
 
   const { sidebar } = new Sidebar({ data }).generateLayout();
 
-  const { mainContent } = new MainContent({ data, images }).generateLayout();
-
   const pageInner = createNode('div', 'page__inner', [
     sidebar,
-    createNode('div', 'page__content', [header, mainContent]),
+    createNode('div', 'page__content', [header, innerNode]),
   ]);
 
   document.body.prepend(pageInner);
@@ -34,4 +31,10 @@ window.onload = () => {
   if (data) {
     renderPage();
   }
+};
+
+export {
+  data,
+  images,
+  renderPage,
 };

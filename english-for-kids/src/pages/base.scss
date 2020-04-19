@@ -112,3 +112,19 @@ figure {
 .visually-hidden {
   @include visually-hidden;
 }
+
+/* Bootstrap correcting
+******************************/
+.page {
+  &__header {
+    .row {
+      padding: 40px 15px;
+    }
+  }
+
+  @media (min-width: 1500px) {
+    .container {
+      max-width: 1440px;
+    }
+  }
+}
