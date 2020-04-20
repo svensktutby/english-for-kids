@@ -27,12 +27,6 @@ const renderPage = (innerNode) => {
   document.body.prepend(createNode('noscript', null, 'You need to enable JavaScript to run this app.'));
 };
 
-window.onload = () => {
-  if (data) {
-    renderPage();
-  }
-};
-
 export {
   data,
   images,

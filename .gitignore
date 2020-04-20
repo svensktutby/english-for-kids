@@ -112,6 +112,7 @@ Thumbs.db
 # Project
 .idea
 .vscode/
+.netlify/
 *.sublime*
 build/
 

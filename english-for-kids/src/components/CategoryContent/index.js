@@ -11,7 +11,7 @@ export default class CategoryContent {
     this.categoryContent = createNode('main', 'page__main',
       createNode('div', 'container', [
         this.inner,
-        createNode('h2', 'visually-hidden', this.title),
+        createNode('h2', 'visually-hidden category__title', this.title),
       ]), null, ['id', 'main']);
   }
 

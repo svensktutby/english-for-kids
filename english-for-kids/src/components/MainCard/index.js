@@ -15,17 +15,12 @@ export default class MainCard {
 
   generateLayout() {
     const firstWord = this.words[0].word;
-    const href = `category.html#${this.title
-      .toLowerCase()
-      .replace(/\s/g, '-')
-      .replace(/\(|\)/g, '')}`;
-
     createNode('a', 'main-card__link', [
       createNode('div', 'main-card__img-wrapper',
         createNode('img', 'main-card__image', null, null, ['src', this.imageSrc], ['width', '390'], ['height', '260'], ['alt', firstWord])),
       createNode('h2', 'main-card__title',
         createNode('span', 'main-card__title-inner', this.title))],
-    this.mainCard, ['href', href]);
+    this.mainCard, ['href', '/category.html']);
 
     return this;
   }

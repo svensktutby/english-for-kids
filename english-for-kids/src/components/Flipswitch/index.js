@@ -24,6 +24,7 @@ export default class Flipswitch {
     if (!this.flipswitch.checked) {
       this.flipswitch.checked = true;
       pageInner.classList.add('page__inner--theme-play');
+      alert('Режим игры в настоящее время еще не реализован.');
     } else if (this.flipswitch.checked) {
       pageInner.classList.remove('page__inner--theme-play');
       this.flipswitch.checked = false;

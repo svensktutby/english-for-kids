@@ -9,6 +9,8 @@ export default class MainContent {
     this.inner = createNode('div', 'row justify-content-center justify-content-md-start');
     this.mainContent = createNode('main', 'page__main',
       createNode('div', 'container', this.inner), null, ['id', 'main']);
+    this.handler = (evt) => this.linkClickHandler(evt);
+    this.mainContent.addEventListener('click', this.handler);
   }
 
   generateLayout() {
@@ -19,5 +21,14 @@ export default class MainContent {
     });
 
     return this;
+  }
+
+  linkClickHandler(evt) {
+    const { target } = evt;
+    this.mainContentItem = target.closest('.main-card__link');
+
+    if (this.mainContentItem) {
+      window.localStorage.setItem('category', this.mainContentItem.querySelector('.main-card__title-inner').textContent);
+    }
   }
 }

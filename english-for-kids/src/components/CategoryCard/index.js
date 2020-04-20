@@ -11,8 +11,8 @@ export default class CategoryCard {
       'category-card category-card--train col col-xl-3 col-md-6 col-12',
       null,
       null,
-      ['tabindex', '0']);
-    this.clickHandler = (evt) => this.rotateCard(evt);
+      ['data-audio', `assets/${this.audioSrc}`]);
+    this.clickHandler = (evt) => this.rotateAndPlay(evt);
     this.mouseLeaveHandler = (evt) => this.rotateBackCard(evt);
     this.categoryCard.addEventListener('click', this.clickHandler);
   }
@@ -35,7 +35,7 @@ export default class CategoryCard {
     return this;
   }
 
-  rotateCard(evt) {
+  rotateAndPlay(evt) {
     evt.preventDefault();
     const { target } = evt;
 
@@ -43,6 +43,10 @@ export default class CategoryCard {
       this.categoryCard.querySelector('.category-card__inner').classList.add('category-card__inner--rotate');
       this.categoryCard.addEventListener('mouseleave', this.mouseLeaveHandler);
       target.blur();
+    } else if (target.classList.contains('category-card__front')
+    || target.closest('.category-card__front')) {
+      const audio = new Audio(`${this.categoryCard.dataset.audio}`);
+      audio.play();
     }
   }
 
