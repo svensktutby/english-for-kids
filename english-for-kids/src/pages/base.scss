@@ -127,4 +127,11 @@ figure {
       max-width: 1440px;
     }
   }
+
+  @media (max-width: 500px) {
+    .row {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
 }

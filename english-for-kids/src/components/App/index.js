@@ -13,14 +13,20 @@ const images = imageSources.reduce((acc, src) => {
   return acc;
 }, {});
 
-const renderPage = (innerNode) => {
-  const { header } = new Header().generateLayout();
+const renderPage = () => {
+  const state = window.localStorage.getItem('state') || 'train';
+  const getPlayClass = (mode) => (mode === 'play' ? ' page__inner--play' : '');
+
+  const { header } = new Header({ state }).generateLayout();
 
   const { sidebar } = new Sidebar({ data }).generateLayout();
 
-  const pageInner = createNode('div', 'page__inner', [
+  const pageInner = createNode('div', `page__inner${getPlayClass(state)}`, [
     sidebar,
-    createNode('div', 'page__content', [header, innerNode]),
+    createNode('div', 'page__content', [
+      header,
+      createNode('main', 'page__main',
+        createNode('div', 'container', null, null, ['id', 'content']))]),
   ]);
 
   document.body.prepend(pageInner);

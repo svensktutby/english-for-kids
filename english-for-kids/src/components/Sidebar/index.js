@@ -31,7 +31,7 @@ export default class Sidebar {
 
   linkClickHandler(evt) {
     const { target } = evt;
-    evt.preventDefault();
+
     this.sidebarItem = target.closest('.sidebar__item');
     this.sidebarItems = this.sidebarList.querySelectorAll('.sidebar__item');
 
@@ -41,6 +41,12 @@ export default class Sidebar {
       this.sidebarItems.forEach((item) => item.classList.remove('sidebar__item--active'));
       this.sidebarItem.classList.add('sidebar__item--active');
       window.location = href;
+
+      // if (window.location.href === href) {
+      //   evt.preventDefault();
+      // } else {
+      //   window.location = href;
+      // }
     }
   }
 }

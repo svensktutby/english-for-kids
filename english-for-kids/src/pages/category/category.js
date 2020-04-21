@@ -1,5 +1,4 @@
 import './category.scss';
-// eslint-disable-next-line import/named
 import { data, images, renderPage } from '../../components/App';
 import CategoryContent from '../../components/CategoryContent';
 
@@ -8,10 +7,17 @@ const getCategoryIndex = () => {
   return data.findIndex((item) => item.title === category);
 };
 
-const { categoryContent } = new CategoryContent(data[getCategoryIndex()], images).generateLayout();
+const injectContent = () => {
+  // eslint-disable-next-line max-len
+  const { categoryContent } = new CategoryContent(data[getCategoryIndex()], images).generateLayout();
+  const innerContent = document.querySelector('#content');
+  innerContent.innerHTML = '';
+  innerContent.append(categoryContent);
+};
 
 window.onload = () => {
   if (data) {
-    renderPage(categoryContent);
+    renderPage();
+    injectContent();
   }
 };

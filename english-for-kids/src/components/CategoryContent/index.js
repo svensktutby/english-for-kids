@@ -7,18 +7,21 @@ export default class CategoryContent {
     this.title = title;
     this.words = words;
     this.images = images;
-    this.inner = createNode('div', 'row justify-content-center justify-content-md-start');
-    this.categoryContent = createNode('main', 'page__main',
-      createNode('div', 'container', [
-        this.inner,
-        createNode('h2', 'visually-hidden category__title', this.title),
-      ]), null, ['id', 'main']);
+    this.cardsContainer = createNode('div', 'row justify-content-center',
+      createNode('h2', 'visually-hidden', this.title));
+    this.categoryContent = createNode('div', 'category-content', [
+      this.cardsContainer,
+      createNode('div', 'row justify-content-center',
+        createNode('div', 'category-content__btn-wrapper',
+          createNode('button', 'category-content__btn',
+            createNode('span', 'category-content__btn-text', 'Start game'),
+            null, ['type', 'button'])))]);
   }
 
   generateLayout() {
     this.words.forEach((item) => {
       const { categoryCard } = new CategoryCard(item, this.images).generateLayout();
-      this.inner.append(categoryCard);
+      this.cardsContainer.append(categoryCard);
     });
 
     return this;

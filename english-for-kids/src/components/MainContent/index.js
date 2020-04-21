@@ -6,9 +6,7 @@ export default class MainContent {
   constructor({ data, images }) {
     this.data = data;
     this.images = images;
-    this.inner = createNode('div', 'row justify-content-center justify-content-md-start');
-    this.mainContent = createNode('main', 'page__main',
-      createNode('div', 'container', this.inner), null, ['id', 'main']);
+    this.mainContent = createNode('div', 'row justify-content-center main-content');
     this.handler = (evt) => this.linkClickHandler(evt);
     this.mainContent.addEventListener('click', this.handler);
   }
@@ -17,7 +15,7 @@ export default class MainContent {
     this.data.forEach((item) => {
       const imageSrc = this.images[item.words[0].word];
       const { mainCard } = new MainCard(item, imageSrc).generateLayout();
-      this.inner.append(mainCard);
+      this.mainContent.append(mainCard);
     });
 
     return this;

@@ -17,7 +17,7 @@
   transition-duration: $transition-time * 2;
   transition-property: transform, margin-left, left, background-color, background-image;
 
-  .page__inner--theme-play & {
+  .page__inner--play & {
     background-color: $play-sidebar-color;
     background-image: $play-sidebar-gradient;
   }
@@ -54,7 +54,7 @@
       background-color: $light-blue;
       background-image: $blue-white-gradient;
 
-      .page__inner--theme-play & {
+      .page__inner--play & {
         color: $play-color;
       }
     }
@@ -79,7 +79,7 @@
     background-image: $purple-blue-gradient;
     cursor: default;
 
-    .page__inner--theme-play & {
+    .page__inner--play & {
       color: $white;
 
       background-color: $light-pink;

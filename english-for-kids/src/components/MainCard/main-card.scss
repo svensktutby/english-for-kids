@@ -69,7 +69,7 @@
     transition-property: min-width, background-color, border-radius;
   }
 
-  .page__inner--theme-play & {
+  .page__inner--play & {
     .main-card__link {
       background-color: $play-color;
       background-image: $play-gradient;

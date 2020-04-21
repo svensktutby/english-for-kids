@@ -4,7 +4,8 @@ import Burger from '../Burger';
 import Flipswitch from '../Flipswitch';
 
 export default class Header {
-  constructor() {
+  constructor({ state }) {
+    this.state = state;
     this.inner = createNode('div', 'row',
       createNode('h1', 'visually-hidden', 'English for kids - приложение для изучения английских слов детьми.'));
     this.header = createNode('header', 'page-header page__header',
@@ -20,6 +21,7 @@ export default class Header {
     const { flipswitch } = new Flipswitch({
       dataShow: 'TRAIN',
       dataHide: 'PLAY',
+      state: this.state,
     });
 
     this.inner.append(burger);
