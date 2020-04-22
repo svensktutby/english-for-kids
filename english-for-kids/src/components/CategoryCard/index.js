@@ -8,12 +8,12 @@ export default class CategoryCard {
     this.audioSrc = audioSrc;
     this.images = images;
     this.categoryCard = createNode('div',
-      'category-card category-card--train col col-xl-3 col-md-6 col-12',
+      'category-card col col-xl-3 col-md-6 col-12',
       null,
       null,
       ['data-audio', `assets/${this.audioSrc}`]);
-    this.clickHandler = (evt) => this.rotateAndPlay(evt);
-    this.mouseLeaveHandler = (evt) => this.rotateBackCard(evt);
+    this.clickHandler = (evt) => this.rotateAndPlaySound(evt);
+    this.mouseLeaveHandler = (evt) => this.rotateCardBack(evt);
     this.categoryCard.addEventListener('click', this.clickHandler);
   }
 
@@ -35,28 +35,28 @@ export default class CategoryCard {
     return this;
   }
 
-  rotateAndPlay(evt) {
+  rotateAndPlaySound(evt) {
     evt.preventDefault();
     const { target } = evt;
+    const state = window.localStorage.getItem('state') || 'train';
 
     if (target.classList.contains('category-card__rotate-btn')) {
       this.categoryCard.querySelector('.category-card__inner').classList.add('category-card__inner--rotate');
-      this.categoryCard.addEventListener('mouseleave', this.mouseLeaveHandler);
+      this.categoryCard.addEventListener('mouseleave', this.mouseLeaveHandler, { once: true });
       target.blur();
-    } else if (target.classList.contains('category-card__front')
-    || target.closest('.category-card__front')) {
+    } else if (state === 'train'
+      && target.closest('.category-card__front')) {
       const audio = new Audio(`${this.categoryCard.dataset.audio}`);
       audio.play();
     }
   }
 
-  rotateBackCard(evt) {
+  rotateCardBack(evt) {
     evt.preventDefault();
     this.categoryCardInner = this.categoryCard.querySelector('.category-card__inner');
 
     if (this.categoryCardInner.classList.contains('category-card__inner--rotate')) {
       this.categoryCardInner.classList.remove('category-card__inner--rotate');
-      this.categoryCard.removeEventListener('mouseleave', this.mouseLeaveHandler);
     }
   }
 }

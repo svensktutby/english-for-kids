@@ -21,6 +21,7 @@
 
   &__content {
     flex-grow: 1;
+    max-width: 100%;
   }
 
   &__footer-wrapper {
@@ -118,7 +119,7 @@ figure {
 .page {
   &__header {
     .row {
-      padding: 40px 15px;
+      padding: 40px $grid-gutter-width / 2;
     }
   }
 

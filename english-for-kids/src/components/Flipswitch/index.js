@@ -26,16 +26,20 @@ export default class Flipswitch {
 
   toggleState() {
     const pageInner = document.querySelector('.page__inner');
-    const state = window.localStorage.getItem('state');
+    const state = window.localStorage.getItem('state') || this.state;
+    const playState = window.localStorage.getItem('playState') || 'inactive';
     if (state === 'train') {
       pageInner.classList.add('page__inner--play');
       window.localStorage.setItem('state', 'play');
       this.toggle.checked = false;
-      alert('Режим игры в настоящее время еще не реализован.');
     } else {
       pageInner.classList.remove('page__inner--play');
       window.localStorage.setItem('state', 'train');
       this.toggle.checked = true;
+      if (playState === 'active') {
+        window.localStorage.setItem('playState', 'inactive');
+        window.location.reload();
+      }
     }
   }
 }

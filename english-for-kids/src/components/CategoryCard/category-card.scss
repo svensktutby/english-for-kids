@@ -44,6 +44,7 @@
 
   &__front {
     transform: rotateY(0);
+    cursor: pointer;
   }
 
   &__back {
@@ -55,6 +56,13 @@
 
     background-color: rgba(#000, 0.7);
     border-radius: 5px 5px 0 0;
+
+    transition: opacity $transition-time;
+
+    .category-card--inactive & {
+      opacity: 0.5;
+      cursor: default;
+    }
   }
 
   &__footer {
@@ -78,8 +86,6 @@
 
     background-color: rgba(#fff, 0.2);
     border-radius: 3px;
-
-    pointer-events: none;
   }
 
   &__rotate-btn {

@@ -36,17 +36,12 @@ export default class Sidebar {
     this.sidebarItems = this.sidebarList.querySelectorAll('.sidebar__item');
 
     if (target.classList.contains('sidebar__link') && this.sidebarItem) {
+      window.localStorage.setItem('playState', 'inactive');
       const { href } = target;
       window.localStorage.setItem('category', target.textContent);
       this.sidebarItems.forEach((item) => item.classList.remove('sidebar__item--active'));
       this.sidebarItem.classList.add('sidebar__item--active');
       window.location = href;
-
-      // if (window.location.href === href) {
-      //   evt.preventDefault();
-      // } else {
-      //   window.location = href;
-      // }
     }
   }
 }

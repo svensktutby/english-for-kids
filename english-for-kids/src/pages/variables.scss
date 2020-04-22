@@ -15,12 +15,14 @@ $gray-lightest:               hsl(0, 0%, 90%);
 $white:                       hsl(0, 0%, 100%);
 
 $light-blue:                  hsl(162, 87%, 94%);
+$blue-lighter:                hsl(204, 73%, 74%);
 $blue:                        hsl(205, 76%, 68%);
 $purple:                     	hsl(217, 96%, 81%);
 $cyan:                       	hsl(179, 69%, 51%);
-$light-pink:               	  hsl(352, 100%, 86%);
+$pink-light:               	  hsl(352, 100%, 86%);
+$pink-lighter:                hsl(353, 96%, 81%);
 $pink:                    	  hsl(354, 100%, 77%);
-$dark-pink:                   hsl(317, 100%, 59%);
+$pink-dark:                   hsl(317, 100%, 59%);
 
 $blue-white-gradient:         linear-gradient(-225deg, #d7fffe 0%, #fffeff 100%);
 $blue-pink-gradient:          linear-gradient(-225deg, #e3fdf5 0%, #ffe6fa 100%);
@@ -43,7 +45,7 @@ $train-sidebar-color: $cyan;
 $train-sidebar-gradient: $cyan-purple-gradient;
 $play-color: $pink;
 $play-gradient: $pink-gradient;
-$play-sidebar-color: $dark-pink;
+$play-sidebar-color: $pink-dark;
 $play-sidebar-gradient: $dark-pink-gradient;
 
 /* Semantic colors
